@@ -1,0 +1,42 @@
+{
+    "image1": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAZmaIiAgAAGDMhoiI/wAAxmy4hoj/D2CZibuGiP8PYGaJu4aI/w9gZomIiIj4AGBmibv2/4gAYGaJu4b4iABgZom7hvj4AGBmhriGj/8PYMy8iPaI/w8AxsxriIj/DwBgmWlmiPgPAABmZtaGiAAAAG1m1o0IAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Blue Car"
+    },
+    "image2": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAIiLu7g4AACDM4u7u/wAAwiy+4u7/DyBE5Lvi7v8PICLku+Lu/w8gIuTu7u7+ACAi5Lvy/+4AICLku+L+7gAgIuS74v7+ACAi4r7i7/8PIMy87vLu/w8Awswr7u7/DwAgRCQi7v4PAAAiItLi7gAAAC0i0u0OAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Red Car"
+    },
+    "image3": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAMzOqqgoAADDMo6qq/wAAwzy6o6r/DzDdrbujqv8PMDOtu6Oq/w8wM62qqqr6ADAzrbvz/6oAMDOtu6P6qgAwM627o/r6ADAzo7qjr/8PMMy8qvOq/w8Aw8w7qqr/DwAw3T0zqvoPAAAzM9OjqgAAAD0z060KAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Purple Car"
+    },
+    "image4": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAARAAAAAAAAEBEAAAAAABARAQAAAAAAFREBAAAAABERUQAAAAAQFREBAAAAABHREQEAAAAAHdERAAAAAB3d0REAAAAAAdwRwQAAAAAAHd3BwAAAAB3BwcAAAAAAAAABwAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Carrot"
+    },
+    "image5": {
+        "data": "hwQQABAAAAAAAAAAEBEAAAAAAAAREREAAAAAABEREREAAAAAEREREQAAAAARERHxAAAAEBERsfEAAAAQERGxAAAAABEREbsAERERERERCwAxMxEREREBABERER8REQEAABARMREREQAQEREfERERABAzEREREfEAEBEREREADwAAAAARAQAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Bunny Jumping"
+    },
+    "image6": {
+        "data": "hwQQABAAAAAAAAARAQAAABARERERAA8AEDMRERER8QAQEREfERERAAAQETEREREAERERHxERAQAxMxEREREBABEREREREQsAAAAAERERuwAAAAAQERGxAAAAABAREbHxAAAAABEREfEAAAAAEREREQAAAAARERERAAAAABEREQAAAAAAEBEAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Bunny Jumping Rev"
+    },
+    "image7": {
+        "data": "hwQQABAAAAAAAAAAABEBAAAAAAAQEREAAAAAABAREREAAAAAEBEREQAAAAAQERHxAAAAABARsfEAAAAAEBGxAAAAABAREbEAABERERERsQAAMRMREREREQAREfERERHxAAARERMREfEAERHxERERAAAxExEREQEAABEREREBAAAAAAAQEQAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Bunny"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
