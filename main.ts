@@ -2,7 +2,7 @@ namespace SpriteKind {
     export const Bunny = SpriteKind.create()
     export const Car = SpriteKind.create()
 }
-function createLevel1() {
+function createLevel1 () {
     currentLevel = 1
     game.splash("Level 1", "Easy")
     // Map
@@ -10,51 +10,61 @@ function createLevel1() {
     tiles.placeOnTile(bunny, tiles.getTileLocation(8, 30))
     // Objects
     carRoad = [
-        6,
-        7,
-        8,
-        11,
-        12,
-        13,
-        16,
-        17,
-        18,
-        21,
-        22,
-        23,
-        26,
-        27,
-        28
+    6,
+    7,
+    8,
+    11,
+    12,
+    13,
+    16,
+    17,
+    18,
+    21,
+    22,
+    23,
+    26,
+    27,
+    28
     ]
     carRoad.forEach((road) => createCar(road))
-    let carrotPlace = carRoad.concat([9, 14, 24])
-    carrotPlace.forEach((place) => createCarrot(place))
+let carrotPlace = carRoad.concat([9, 14, 24])
+carrotPlace.forEach((place) => createCarrot(place))
 }
-function createBunny() {
+function createBunny () {
     bunny = sprites.create(assets.image`Bunny`, SpriteKind.Bunny)
     scene.cameraFollowSprite(bunny)
     // Controller
     controller.moveSprite(bunny)
+
     controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-        animation.runImageAnimation(bunny, [assets.image`Bunny Jumping`, assets.image`Bunny`], 300, false)
+        animation.runImageAnimation(bunny, [assets.image`Bunny Jumping`, assets.image`Bunny`, assets.image`Bunny Jumping`, assets.image`Bunny`], 200, true)
     })
+    controller.up.onEvent(ControllerButtonEvent.Released, function () {
+        animation.runImageAnimation(bunny, [assets.image`Bunny`], 100, false)
+    })
+
     controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-        animation.runImageAnimation(bunny, [assets.image`Bunny Jumping`, assets.image`Bunny`], 300, false)
+        animation.runImageAnimation(bunny, [assets.image`Bunny Jumping`, assets.image`Bunny`, assets.image`Bunny Jumping`, assets.image`Bunny`], 200, false)
     })
+    controller.down.onEvent(ControllerButtonEvent.Released, function () {
+        animation.runImageAnimation(bunny, [assets.image`Bunny`], 100, false)
+    })
+
     controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-        animation.runImageAnimation(bunny, [assets.image`Bunny Jumping Rev`, assets.image`Bunny Rev`], 300, false)
+        animation.runImageAnimation(bunny, [assets.image`Bunny Jumping Rev`, assets.image`Bunny Rev`, assets.image`Bunny Jumping Rev`, assets.image`Bunny Rev`], 200, true)
     })
-    controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
-        animation.runImageAnimation(bunny, [assets.image`Bunny Jumping Rev`, assets.image`Bunny Rev`, assets.image`Bunny Jumping Rev`,], 300, false)
+    controller.left.onEvent(ControllerButtonEvent.Released, function () {
+        animation.runImageAnimation(bunny, [assets.image`Bunny Rev`], 100, false)
     })
+
     controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-        animation.runImageAnimation(bunny, [assets.image`Bunny Jumping`, assets.image`Bunny`], 300, false)
+        animation.runImageAnimation(bunny, [assets.image`Bunny Jumping`, assets.image`Bunny`, assets.image`Bunny Jumping`, assets.image`Bunny`], 200, true)
     })
     controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
-        animation.runImageAnimation(bunny, [assets.image`Bunny Jumping`, assets.image`Bunny`, assets.image`Bunny Jumping`], 300, false)
+        animation.runImageAnimation(bunny, [assets.image`Bunny`], 100, false)
     })
 }
-function createLevel2() {
+function createLevel2 () {
     currentLevel = 2
     // Destroy previous object
     sprites.destroyAllSpritesOfKind(SpriteKind.Car)
@@ -65,23 +75,23 @@ function createLevel2() {
     tiles.placeOnTile(bunny, tiles.getTileLocation(7, 1))
     // Objects
     carRoad2 = [
-        3,
-        4,
-        5,
-        6,
-        9,
-        10,
-        11,
-        12,
-        15,
-        16,
-        17,
-        18
+    3,
+    4,
+    5,
+    6,
+    9,
+    10,
+    11,
+    12,
+    15,
+    16,
+    17,
+    18
     ]
     carRoad2.forEach((road) => createCar(road, true))
-    let carrotPlace2 = carRoad2.concat([8, 13])
-    carrotPlace2.forEach((place) => createCarrot(place))
-    info.startCountdown(40)
+let carrotPlace2 = carRoad2.concat([8, 13])
+carrotPlace2.forEach((place) => createCarrot(place))
+info.startCountdown(40)
     // Lighting Effect
     multilights.toggleLighting(true)
     multilights.addLightSource(bunny)
@@ -100,33 +110,33 @@ sprites.onOverlap(SpriteKind.Bunny, SpriteKind.Car, function (sprite, otherSprit
     }
     otherSprite.destroy()
 })
-scene.onOverlapTile(SpriteKind.Bunny, assets.tile`myTile0`, function (sprite, location) {
+scene.onHitWall(SpriteKind.Car, function (sprite, location) {
+    speedBack = [-0.95, -1, -1.05]
+    sprite.vx *= speedBack[randint(0, 2)]
+sprite.image.flipX()
+})
+scene.onOverlapTile(SpriteKind.Bunny, assets.tile`End1`, function (sprite, location) {
     music.stopAllSounds()
     music.powerUp.play()
     game.splash("CONGRATULATION!", "That was easy?")
     createLevel2()
-})
-scene.onHitWall(SpriteKind.Car, function (sprite, location) {
-    speedBack = [-0.95, -1, -1.05]
-    sprite.vx *= speedBack[randint(0, 2)]
-    sprite.image.flipX()
 })
 sprites.onOverlap(SpriteKind.Bunny, SpriteKind.Food, function (sprite, otherSprite) {
     music.baDing.play()
     info.changeScoreBy(1)
     otherSprite.destroy()
 })
-function createCarrot(place: number) {
+function createCarrot (place: number) {
     carrotCol = [
-        1,
-        3,
-        4,
-        6,
-        8,
-        9,
-        11,
-        13,
-        14
+    1,
+    3,
+    4,
+    6,
+    8,
+    9,
+    11,
+    13,
+    14
     ]
     carrot = sprites.create(assets.image`Carrot`, SpriteKind.Food)
     tiles.placeOnTile(carrot, tiles.getTileLocation(carrotCol[randint(0, 8)], place))
@@ -143,16 +153,16 @@ scene.onOverlapTile(SpriteKind.Bunny, assets.tile`myTile5`, function (sprite, lo
 let carrot: Sprite = null
 let carrotCol: number[] = []
 let currentLevel = 0
-let speed = 0
-let direction = 0
-let car: Sprite = null
-let carSpeed: number[] = []
-let carDirection: number[] = []
-let carList: Image[] = []
-let speedBack: number[] = []
-let bunny: Sprite = null
-let carRoad: number[] = []
 let carRoad2: number[] = []
+let carRoad: number[] = []
+let bunny: Sprite = null
+let speedBack: number[] = []
+let carList: Image[] = []
+let carDirection: number[] = []
+let carSpeed: number[] = []
+let car: Sprite = null
+let direction = 0
+let speed = 0
 function createCar(road: number, isFaster = false) {
     carList = [assets.image`Red Car`, assets.image`Blue Car`, assets.image`Purple Car`]
     carDirection = [1, 14]
